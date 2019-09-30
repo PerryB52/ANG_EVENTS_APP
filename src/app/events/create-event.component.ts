@@ -16,6 +16,8 @@ import { Router } from '@angular/router';
 })
 export class CreateEventComponent {
 
+    isDirty: boolean = true ///added for the canDeactivate route guard
+
     constructor(private router: Router) {
 
     }
