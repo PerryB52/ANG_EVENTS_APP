@@ -1,25 +1,11 @@
-import { Injectable } from '@angular/core';
+//used to create a token used for the depency injection registry in order to find the instance of the service that we want(toastr)
+import { InjectionToken } from '@angular/core';
 
-//this is how we tell about the compiler that we know about toastr and it is an object on the global scope.
-declare let toastr: any;
+export let TOASTR_TOKEN = new InjectionToken<Toastr>('toastr')
 
-@Injectable()
-export class ToastrService {
-
-    success(message: string, title?: string) {
-        toastr.success(message, title)
-    }
-
-    info(message: string, title?: string) {
-        toastr.success(message, title)
-    }
-
-    warning(message: string, title?: string) {
-        toastr.success(message, title)
-    }
-
-    error(message: string, title?: string) {
-        toastr.success(message, title)
-    }
-
+export interface Toastr{
+    success(msg: string, title?: string): void
+    info(msg: string, title?: string): void
+    warning(msg: string, title?: string): void
+    error(msg: string, title?: string): void
 }
