@@ -25,7 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CollapsibleWellComponent } from './common/collapsible-well.component';
 
 //this is how we tell about the compiler that we know about toastr and it is an object on the global scope.
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
 
 @NgModule({
   imports: [
@@ -49,10 +49,7 @@ declare let toastr: Toastr;
   ],
   providers: [
     EventService,
-    {
-      provide: TOASTR_TOKEN,
-      useValue: toastr
-    },
+    { provide: TOASTR_TOKEN, useValue: toastr },
     EventRouteActivator,
     EventListResolver,
     AuthService, //providers are shared across modules, declarations and imports are NOT
