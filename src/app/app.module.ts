@@ -12,7 +12,9 @@ import {
   EventListResolver,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService
 } from './events/index'
 
 import { EventsAppComponent } from './events-app.component';
@@ -29,6 +31,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { updateBinding } from '@angular/core/src/render3/instructions';
 
 //this is how we tell about the compiler that we know about toastr and it is an object on the global scope.
 let toastr: Toastr = window['toastr'];
@@ -53,6 +56,7 @@ let jQuery = window['$'];
     SessionListComponent,
     CollapsibleWellComponent,
     SimpleModalComponent,
+    UpvoteComponent,
     ModalTriggerDirective,
     DurationPipe
   ],
@@ -62,6 +66,7 @@ let jQuery = window['$'];
     { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
     EventListResolver,
+    VoterService,
     AuthService, //providers are shared across modules, declarations and imports are NOT
     {
       provide: 'canDeactivateCreateEvent',
