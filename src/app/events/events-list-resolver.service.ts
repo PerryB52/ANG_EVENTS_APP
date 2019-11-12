@@ -13,6 +13,6 @@ export class EventListResolver implements Resolve<any>{
 
     resolve() {
         //check tutorial for why we used map instead of subscribe
-        return this.eventService.getEvents().pipe(map(events => events))
+        return this.eventService.getEvents()
     }
 }
