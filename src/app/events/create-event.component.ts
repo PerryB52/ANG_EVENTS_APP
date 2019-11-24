@@ -23,9 +23,10 @@ export class CreateEventComponent {
     }
 
     saveEvent(formValues) {
-        this.eventService.saveEvent(formValues)
-        this.isDirty = false //otherwise routeguard will prevent us from navigating. As we have a routeguard set for dirty.
-        this.router.navigate(['/events'])
+        this.eventService.saveEvent(formValues).subscribe(() => {
+            this.isDirty = false //otherwise routeguard will prevent us from navigating. As we have a routeguard set for dirty.
+            this.router.navigate(['/events'])
+        })
     }
 
     cancel() {
